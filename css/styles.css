@@ -126,22 +126,21 @@ h3 {
     
     /* --- 1. LAYOUT PRINCIPAL (De horizontal a vertical) --- */
     .game-layout {
-        flex-direction: column; /* Apila las secciones verticalmente */
-        max-width: 95%; /* Reduce el ancho máximo para usar el espacio */
-        margin: 10px auto; /* Menos margen en móvil */
-        border: none; /* Simplifica el borde en móvil */
+        flex-direction: column; 
+        max-width: 95%; 
+        margin: 10px auto; 
+        border: none; 
         box-shadow: none;
     }
     
-    /* --- 2. MENU LATERAL (Se convierte en sección de ancho completo) --- */
+    /* --- 2. MENU LATERAL --- */
     .event-menu {
         width: 100%;
         border-right: none;
-        border-bottom: 2px solid #A335FF; /* Añade un separador inferior */
+        border-bottom: 2px solid #A335FF; 
         padding: 0;
     }
 
-    /* Opcional: Centrar los items del menú en móvil */
     .event-menu nav {
         display: flex;
         justify-content: space-around;
@@ -149,10 +148,10 @@ h3 {
     }
     .menu-item, .menu-item-activo {
         padding: 10px 15px;
-        border-left: none; /* Elimina la barra vertical en móvil */
+        border-left: none; 
     }
     .menu-item-activo {
-        border-bottom: 3px solid #00FFFF; /* Mueve la barra de activo a la parte inferior */
+        border-bottom: 3px solid #00FFFF; 
     }
 
     /* --- 3. CONTENIDO PRINCIPAL --- */
@@ -162,30 +161,64 @@ h3 {
 
     /* --- 4. VISUAL Y BOTONES (La imagen principal) --- */
     .hero-visual {
-        height: 250px; /* Reduce la altura de la imagen en móvil */
-        margin-bottom: 15px;
-        /* Asegura que la imagen de fondo siga cubriendo */
+        position: relative;
+        height: 300px; 
+        /* CRÍTICO: Aseguramos que no haya margen después de la imagen */
+        margin-bottom: 0; 
         background-size: cover; 
     }
     
-    /* --- 5. BOTONES DE TIRADA --- */
+    /* --- 5. BOTONES DE TIRADA (MOVIL) --- */
     .draw-buttons-overlay {
-        /* Centrado ya está bien, pero ajusta el gap y padding */
-        gap: 15px; 
-    }
-    .draw-buttons-overlay button {
-        padding: 10px 20px;
-        font-size: 1.0em;
-        /* Ajustar el tamaño del costo en móvil */
-        .costo-descuento {
-            font-size: 1.2em;
-        }
+        position: absolute; /* Mantiene los botones dentro de la imagen */
+        bottom: 10px;        /* Pegados al borde inferior */
+        left: 50%;
+        transform: translateX(-50%); /* Centrado perfecto */
+
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        padding: 0 10px;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+
+        z-index: 10;
     }
     
-    /* --- 6. HISTORIAL Y GESTIÓN DE PROPIEDAD --- */
-    .tab-content {
-        padding: 15px;
+    .draw-buttons-overlay button {
+        flex: 1 1 45%; 
+        max-width: 150px; 
+        padding: 10px 15px; 
+        font-size: 0.9em; 
+        white-space: normal; 
+        text-align: center; 
     }
+
+    .draw-buttons-overlay button .costo-descuento {
+        font-size: 1.1em; 
+        display: block; 
+        margin-bottom: 2px;
+    }
+    .draw-buttons-overlay button .detalle-dto {
+        font-size: 0.7em; 
+    } 
+    
+    /* --- 6. CONTENIDO DE PESTAÑAS (Corrección de Separación) --- */
+    .tab-content {
+        /* CRÍTICO: Separa el contenido de las pestañas de los botones */
+        margin-top: 20px; 
+        background-color: #24144D; 
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .tab-content h3 {
+        padding-top: 0; 
+        padding-bottom: 5px; 
+    } 
     
     /* Ajustes menores para listas */
     #historial-recompensas, #lista-propiedad-skins {
