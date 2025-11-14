@@ -1,0 +1,121 @@
+/* Colores Temáticos:
+   Fondo del Juego: #1F0D42 (Púrpura muy oscuro)
+   Acentos (Bordes de Neon/Gema): #A335FF (Púrpura Vibrante)
+   Cian/Luz: #00FFFF
+   Dorado: #FFC300
+*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1F0D42; /* Fondo Púrpura Oscuro */
+    color: #F4F4F9;
+}
+
+header {
+    /* Mantener el header como barra de navegación superior */
+    background-color: #0F0829; 
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 2px solid #A335FF;
+}
+/* ... (Mantener estilos de nav y h1) ... */
+
+/* --- LAYOUT PRINCIPAL TIPO JUEGO --- */
+.game-layout {
+    display: flex;
+    max-width: 1600px;
+    margin: 30px auto;
+    background-color: #1A0D38; /* Contenedor principal */
+    border: 3px solid #A335FF; /* Borde Neon */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(163, 53, 255, 0.5);
+}
+
+.event-menu {
+    width: 250px;
+    background-color: #100626;
+    padding: 10px 0;
+    border-right: 2px solid #A335FF;
+}
+
+.menu-item, .menu-item-activo {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 700;
+    border-left: 5px solid transparent;
+}
+
+.menu-item-activo {
+    background-color: #331A6B; /* Fondo de la pestaña activa */
+    border-left-color: #00FFFF; /* Barra Cian */
+    color: #00FFFF;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* VISUAL Y BOTONES */
+.hero-visual {
+    position: relative;
+    height: 700px; /* Altura de la imagen principal */
+    background: url('../img/interfaz_layla.png') no-repeat center center/cover;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.draw-buttons-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+}
+
+.draw-buttons-overlay button {
+    /* Estilo de gema/neón para los botones */
+    background: linear-gradient(145deg, #A335FF, #331A6B);
+    color: white;
+    border: 3px solid #00FFFF;
+    box-shadow: 0 0 10px #00FFFF, inset 0 0 5px #00FFFF;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    font-weight: 900;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Estilos de los detalles de costo */
+.costo-descuento {
+    font-size: 1.5em;
+    color: #FFC300;
+    margin-right: 5px;
+}
+.detalle-dto {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-top: 5px;
+    color: #E0E0E0;
+}
+
+/* CONTENIDO DE PESTAÑAS */
+.tab-content {
+    background-color: #24144D; /* Un color de fondo para el contenido del simulador */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #FFC300; /* Títulos en Dorado */
+    border-bottom: 2px solid #A335FF;
+    padding-bottom: 5px;
+}
+
+/* ... (Mantener estilos de inputs, botones, faq, etc. del código anterior) ... */

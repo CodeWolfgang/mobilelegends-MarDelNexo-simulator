@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Mar del Nexo | Guía y Simulador de Gastos 💎MLBB</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌊 Mar del Nexo: Guía y Simulador</h1>
+        <nav>
+            <ul>
+                <li><a href="#registro">Registro</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+<main class="game-layout">
+
+    <aside class="event-menu">
+        <div class="menu-item-activo">Tienda del Evento (Proximamente)</div>
+        <div class="menu-item">Recompensas de Sorteo (Proximamente)</div>
+    </aside>
+
+    <section class="main-content">
+        
+        <div class="hero-visual">
+                        
+            <div class="draw-buttons-overlay">
+                <button id="tirada-1x" data-costo="50">
+                    <span class="costo-descuento">50</span> 100 X1
+                    <span class="detalle-dto">Primer Sorteo Diario 50% DTO</span>
+                </button>
+                <button id="tirada-10x" data-costo="500">
+                    <span class="costo-descuento">500</span> 1000 X10
+                    <span class="detalle-dto">Primer Sorteo Diario 50% DTO</span>
+                    <span class="detalle-dto">Garantiza una Apariencia Especial o mejor</span>
+                </button>
+            </div>
+        </div>
+        
+<div class="guia-tabs">
+                        
+            <section id="registro" class="tab-content">
+                <h3>📜 Simulación en Tiempo Real y Registro</h3>
+                
+                <div class="controles-simulador">
+                    <p class="contador-datos">Diamantes Gastados: 💎 <span id="moneda-actual"> 0 Diamantes</span> | Núcleos Acumulados: 🧿<span id="nucleos-actuales-simulador">0</span></p>
+                </div>
+
+                <h4>Gestión de Propiedad de Skins (Marca las que ya posees)</h4>
+                <div id="lista-propiedad-skins">
+                    </div>
+
+                <h4>Historial de Recompensas:</h4>
+                <ul id="historial-recompensas">
+                    <li>(El historial de las tiradas aparecerá aquí)</li>
+                </ul>
+            </section>
+            
+            <!-- <section id="detalles" class="tab-content">
+                <h3>📅 Guía Completa y Fechas Clave</h3>
+                </section> -->
+        </div>        
+    </section>
+</main>
+    <script src="js/simulator.js"></script>
+</body>
+</html>
