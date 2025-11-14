@@ -118,4 +118,85 @@ h3 {
     padding-bottom: 5px;
 }
 
-/* ... (Mantener estilos de inputs, botones, faq, etc. del código anterior) ... */
+/* =========================================================
+   MEDIA QUERIES PARA RESPONSIVIDAD (Teléfonos y Tablets)
+   ========================================================= */
+
+@media (max-width: 768px) {
+    
+    /* --- 1. LAYOUT PRINCIPAL (De horizontal a vertical) --- */
+    .game-layout {
+        flex-direction: column; /* Apila las secciones verticalmente */
+        max-width: 95%; /* Reduce el ancho máximo para usar el espacio */
+        margin: 10px auto; /* Menos margen en móvil */
+        border: none; /* Simplifica el borde en móvil */
+        box-shadow: none;
+    }
+    
+    /* --- 2. MENU LATERAL (Se convierte en sección de ancho completo) --- */
+    .event-menu {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #A335FF; /* Añade un separador inferior */
+        padding: 0;
+    }
+
+    /* Opcional: Centrar los items del menú en móvil */
+    .event-menu nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .menu-item, .menu-item-activo {
+        padding: 10px 15px;
+        border-left: none; /* Elimina la barra vertical en móvil */
+    }
+    .menu-item-activo {
+        border-bottom: 3px solid #00FFFF; /* Mueve la barra de activo a la parte inferior */
+    }
+
+    /* --- 3. CONTENIDO PRINCIPAL --- */
+    .main-content {
+        padding: 15px;
+    }
+
+    /* --- 4. VISUAL Y BOTONES (La imagen principal) --- */
+    .hero-visual {
+        height: 250px; /* Reduce la altura de la imagen en móvil */
+        margin-bottom: 15px;
+        /* Asegura que la imagen de fondo siga cubriendo */
+        background-size: cover; 
+    }
+    
+    /* --- 5. BOTONES DE TIRADA --- */
+    .draw-buttons-overlay {
+        /* Centrado ya está bien, pero ajusta el gap y padding */
+        gap: 15px; 
+    }
+    .draw-buttons-overlay button {
+        padding: 10px 20px;
+        font-size: 1.0em;
+        /* Ajustar el tamaño del costo en móvil */
+        .costo-descuento {
+            font-size: 1.2em;
+        }
+    }
+    
+    /* --- 6. HISTORIAL Y GESTIÓN DE PROPIEDAD --- */
+    .tab-content {
+        padding: 15px;
+    }
+    
+    /* Ajustes menores para listas */
+    #historial-recompensas, #lista-propiedad-skins {
+        font-size: 0.9em;
+    }
+    
+    /* Fuerza que la lista de propiedad se apile para no desbordar */
+    #lista-propiedad-skins {
+        display: block; 
+    }
+    .skin-item {
+        margin-bottom: 8px;
+    }
+}
