@@ -458,6 +458,52 @@ function manejarTirada(cantidad) {
 // IV. INICIALIZACIÓN Y LISTENERS
 // =========================================================
 
+// =========================================================
+// FUNCIONALIDAD: SELECT ALL POR CATEGORIA (UX MEJORADO)
+// =========================================================
+
+/**
+ * Agrega los listeners a los checkboxes de "Select All" por categoría.
+ */
+function configurarSelectAllListeners() {
+    const selectAllCheckboxes = document.querySelectorAll('.select-all-group input[type="checkbox"]');
+    
+    selectAllCheckboxes.forEach(selectAllBox => {
+        selectAllBox.addEventListener('change', function() {
+            // Obtener las categorías asociadas a este checkbox (separadas por coma)
+            const categories = this.getAttribute('data-categories').split(',');
+            const isChecked = this.checked;
+
+            // Iterar sobre todos los checkboxes individuales de skins
+            const individualSkinCheckboxes = document.querySelectorAll('#lista-propiedad-skins input[type="checkbox"]');
+            
+            individualSkinCheckboxes.forEach(skinBox => {
+                // Obtener la categoría de la skin individual usando el atributo data-category
+                const skinCategory = skinBox.getAttribute('data-category');
+
+                // Verificar si la categoría de la skin individual está incluida en el grupo
+                // y si el skinCategory existe (para evitar errores con elementos sin categoría)
+                if (skinCategory && categories.includes(skinCategory)) {
+                    
+                    // 1. Sincronizar el estado visual en el DOM
+                    skinBox.checked = isChecked;
+                    
+                    // 2. Sincronizar el estado en SKINS_DISPONIBLES (La parte que fallaba)
+                    // Eliminamos el prefijo 'skin-' del ID para obtener el ID real de la skin
+                    const skinId = skinBox.id.replace('skin-', ''); 
+                    
+                    const skinIndex = SKINS_DISPONIBLES.findIndex(s => s.id === skinId);
+                    
+                    if (skinIndex !== -1) {
+                        // Actualizamos el estado de la skin en el array global
+                        SKINS_DISPONIBLES[skinIndex].obtenido = isChecked;
+                    }
+                }
+            });
+        });
+    });
+}
+
 /**
  * Inicializa el estado y los event listeners.
  */
@@ -468,22 +514,26 @@ function iniciarSimulador() {
         const div = document.createElement('div');
         div.className = 'skin-item';
         div.innerHTML = `
-            <input type="checkbox" id="skin-${skin.id}" ${skin.obtenido ? 'checked' : ''}>
-            <label for="skin-${skin.id}">${skin.nombre} (${skin.rareza})</label>
-        `;
+            <input type="checkbox" id="skin-${skin.id}" data-category="${skin.rareza}" ${skin.obtenido ? 'checked' : ''}>
+            <label for="skin-${skin.id}">${skin.nombre} (${skin.rareza})</label>    
+            `;
         listaSkins.appendChild(div);
-    
-    const checkbox = document.getElementById(`skin-${skin.id}`);
-    checkbox.addEventListener('change', (e) => {
-    SKINS_DISPONIBLES[index].obtenido = e.target.checked;
+
+        const checkbox = document.getElementById(`skin-${skin.id}`);
+        // Listener para la selección individual (Mantiene la sincronización del estado)
+        checkbox.addEventListener('change', (e) => {
+            SKINS_DISPONIBLES[index].obtenido = e.target.checked;
+        });
     });
-});
 
     // 2. Event Listeners para botones de tirada
     document.getElementById('tirada-1x').addEventListener('click', () => manejarTirada(1));
     document.getElementById('tirada-10x').addEventListener('click', () => manejarTirada(10));
-    
-    // 3. Inicializar la UI
+
+    // 3. Configurar los listeners de "Select All"
+    configurarSelectAllListeners();
+
+    // 4. Inicializar la UI
     actualizarUI();
 }
 
